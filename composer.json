@@ -1,7 +1,6 @@
 {
     "name": "nur13171/first-package",
     "description": "this is the package for getting login users longitude and lattitude",
-    "type": "composer-plugin",
     "license": "MIT",
     "autoload": {
        
