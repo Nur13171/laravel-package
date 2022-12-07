@@ -1,0 +1,35 @@
+{
+    "name": "nur13171/first-package",
+    "description": "this is the package for getting login users longitude and lattitude",
+    "type": "composer-plugin",
+    "license": "MIT",
+    "autoload": {
+       
+        "psr-4": {
+            "Nur13171\\FirstPackage\\": "src/"
+        }
+    
+    },
+    "require": {
+        "php": ">=5.5"
+    },
+    "minimum-stability": "dev",
+    "authors": [
+        {
+            "name": "Minhaz",
+            "email": "nhminhaz@gmail.com"
+        }
+    ],
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Nur13171\\FirstPackage\\FirstPackageServiceProvider",
+                "Nur13171\\FirstPackage\\RouteServiceProvider"
+            ],
+            "aliases": {
+                "Debugbar": "Nur13171\\FirstPackage\\Facades\\FirstPackage"
+            }
+        }
+    }
+   
+}
