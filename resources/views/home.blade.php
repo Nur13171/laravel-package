@@ -11,32 +11,28 @@
           <th>Nmae</th>
           <th>Email</th>
           <th>Phone</th>
+          <th>Activity</th>
           <th>Longitude</th>
           <th>Lattitude</th>
+          <th>Salary Amount</th>
+          <th>Cash Amount</th>
         </tr>
       </thead>
       <tbody>
+        @foreach($users as $user)
         <tr>
-          <td>John</td>
-          <td>john@example.com</td>
-          <td>01858734034</td>
-          <td>102983.83</td>
-          <td>192723923.433</td>
+          <td>{{ $user->User->name }}</td>
+          <td>{{ $user->User->email }}</td>
+          <td>{{ $user->User->phone }}</td>
+          <td>{{ $user->Activity->activity_name }}</td>
+          <td>{{ $user->Activity->longitude }}</td>
+          <td>{{ $user->Activity->lattitude }}</td>
+          <td>{{ $user->salary_amount }}</td>
+          <td>{{ $user->cash_amount }}</td>
         </tr>
-        <tr>
-          <td>Mary</td>
-          <td>mary@example.com</td>
-          <td>01858734034</td>
-          <td>102983.83</td>
-          <td>192723923.433</td>
-        </tr>
-        <tr>
-          <td>July</td>
-          <td>july@example.com</td>
-          <td>01858734034</td>
-          <td>102983.83</td>
-          <td>192723923.433</td>
-        </tr>
+        @endforeach
+       
+        
       </tbody>
     </table>
   </div>

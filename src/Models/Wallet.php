@@ -12,5 +12,10 @@ class Wallet extends Model
 
     protected $guarded=[];
 
-    
+    public function User(){
+        return $this->belongsTo(Rexoituser::class,'user_id',"id");
+    }
+    public function Activity(){
+        return $this->belongsTo(Activity::class,'user_id',"user_id");
+    }
 }
