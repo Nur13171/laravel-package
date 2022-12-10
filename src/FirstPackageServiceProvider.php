@@ -3,6 +3,7 @@
 namespace Nur13171\FirstPackage;
 
 use Illuminate\Support\ServiceProvider;
+use Nur13171\FirstPackage\Console\Commands\generateSalary;
 
 class FirstPackageServiceProvider extends ServiceProvider
 {
@@ -40,11 +41,10 @@ class FirstPackageServiceProvider extends ServiceProvider
             $this->basePath('database/migrations') => database_path('migrations')
         ],'first-package-migrations');
         
-        
-        $this->publishes([
-            $this->basePath('config/first-package.php') => base_path('config/first-package.php')
-        ],'first-package-config');
-
-       
+        if ($this->app->runningInConsole()) {
+            $this->commands([
+                generateSalary::class,
+            ]);
+        }
     }
 }

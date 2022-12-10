@@ -30,12 +30,17 @@ class UserController extends Controller{
 
     public function UserStore(Request $request)
     {
+        //This method retrieves the user's IP address via request()->ip().
         $ip= request()->ip();
-        $data=Location::get("103.209.228.122");
+
+       /* now it is a fixed ip because using local server $data=Location::get("103.209.228.122");
+        when we use live server then it would be $data=Location::get($ip); */
+        $data=Location::get("103.209.228.122"); 
         $request->validate([
             'name' => 'required',
             'email' => 'required',
             'password' => 'required',
+            'confirm_password' => 'required',
             'phone' => 'required',
         ]);
         $user_id=RexoitUser::insertGetId([
@@ -47,7 +52,7 @@ class UserController extends Controller{
         ]);
         Activity::insert([
             'user_id' => $user_id,
-            'activity_name' => $request->activity,
+            'activity_name' => $request->activity_name,
             'longitude' => $data->longitude,
             'lattitude' => $data->latitude,
             'created_at' => Carbon::now()
