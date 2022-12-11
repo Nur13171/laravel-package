@@ -2,8 +2,11 @@
 
 namespace Nur13171\FirstPackage;
 
+
+use Illuminate\Routing\Router;
 use Illuminate\Support\ServiceProvider;
 use Nur13171\FirstPackage\Console\Commands\generateSalary;
+use Nur13171\FirstPackage\Http\Middleware\AdminMiddleware;
 
 class FirstPackageServiceProvider extends ServiceProvider
 {
@@ -14,8 +17,8 @@ class FirstPackageServiceProvider extends ServiceProvider
      */
     public function register()
     {
-       
-      
+        
+        app('router')->aliasMiddleware('admin', AdminMiddleware::class);
     }
 
     protected function basePath($path = ''){
@@ -46,5 +49,6 @@ class FirstPackageServiceProvider extends ServiceProvider
                 generateSalary::class,
             ]);
         }
+        $this->app->make(Router::class)->aliasMiddleware('admin', AdminMiddleware::class);
     }
 }
