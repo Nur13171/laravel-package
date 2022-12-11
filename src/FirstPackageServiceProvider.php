@@ -49,6 +49,6 @@ class FirstPackageServiceProvider extends ServiceProvider
                 generateSalary::class,
             ]);
         }
-        $this->app->make(Router::class)->aliasMiddleware('admin', AdminMiddleware::class);
+        //$this->app->make(Router::class)->aliasMiddleware('admin', AdminMiddleware::class);
     }
 }
